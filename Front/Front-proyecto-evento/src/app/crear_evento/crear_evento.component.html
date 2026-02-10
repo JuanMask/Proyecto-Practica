@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Crear Evento</h1>
+
+    <form>
+        <label for="nombre">Nombre del Evento: <br>
+        <input type="text" required placeholder="Ingresa el nombre del evento">
+    </label>
+
+    <label for="descripcion">Descripción del Evento: <br>
+        <textarea required placeholder="Ingresa la descripción del evento"></textarea>
+
+    </label>
+
+    <label for="fecha">Fecha del Evento: <br>
+        <input type="date" required>
+    </label>
+
+    <button [routerLink]="['/principal']">
+      Crear Evento
+    </button>
+    </form>
+
+
+    
+</div>
