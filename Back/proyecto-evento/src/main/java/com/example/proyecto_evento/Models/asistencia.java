@@ -8,20 +8,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 //Arreglar las relaciones de las columnas
 @Entity
 public class asistencia {
     @Id
     private int id_asistencia;
-    @OneToMany
+
+    @ManyToOne
     @JoinColumn(name = "id_evento")
     private evento eve;
-    private int id_evento;
-    @ManyToMany
+    /* private int id_evento; */
+
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
     private usuario usu;
-    private int id_usuario;
+    /* private int id_usuario; */
     private boolean estado;
 
     /* private String fecha_registro; */
@@ -32,8 +35,8 @@ public class asistencia {
     }
     public asistencia(int id_asistencia, int id_evento, int id_usuario, boolean estado, LocalDateTime fecha_registro) {
         this.id_asistencia = id_asistencia;
-        this.id_evento = id_evento;
-        this.id_usuario = id_usuario;
+        /* this.id_evento = id_evento;
+        this.id_usuario = id_usuario; */
         this.estado = estado;
         this.fecha_registro = fecha_registro;
     }
@@ -43,7 +46,7 @@ public class asistencia {
     public void setId_asistencia(int id_asistencia) {
         this.id_asistencia = id_asistencia;
     }
-    public int getId_evento() {
+    /* public int getId_evento() {
         return id_evento;
     }
     public void setId_evento(int id_evento) {
@@ -54,7 +57,7 @@ public class asistencia {
     }
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
-    }
+    } */
     public boolean isEstado() {
         return estado;
     }

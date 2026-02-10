@@ -16,6 +16,8 @@ public class evento {
     @ManyToOne
     @JoinColumn(name = "id_creador")
     private usuario usu;
+
+    
     //private int id_creador; // creador del evento
     private String nombre;
     private String descripcion;
