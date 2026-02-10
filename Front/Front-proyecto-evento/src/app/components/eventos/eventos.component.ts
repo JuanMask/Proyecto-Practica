@@ -23,15 +23,20 @@ export class EventosComponent {
   ) {}
 
   login(){
-    const url = `http://localhost:8080/usuario/log?correo=${this.correo}&ps=${this.ps}`;
+    
+    const url = 'http://localhost:8080/usuario/log';
 
-    this.http.get(url).subscribe({
+    const body = {
+      email: this.correo,
+      ps: this.ps
+    };
+
+    this.http.post(url, body).subscribe({
       next: () => {
         this.router.navigate(['/principal']);
       },
-
       error: () => {
-        this.mensaje = "Correo o contraseña incorrectos";
+        this.mensaje = 'Correo o contraseña incorrectos';
       }
     });
   }
