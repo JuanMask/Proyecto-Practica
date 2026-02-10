@@ -1,0 +1,41 @@
+
+
+<div class="container">
+    <h1>INICIAR SESIÓN</h1>
+    <form (ngSubmit)="login()">
+
+        <label for="email">CORREO: </label>
+        <input
+          type="email"
+          [(ngModel)]="correo"
+          name="correo"
+          required
+          placeholder="Ingresa tu correo electrónico"
+        />
+
+        <label for="password">CONTRASEÑA: </label>
+        <input
+          type="password"
+          [(ngModel)]="ps"
+          name="ps"
+          required
+          placeholder="Ingresa tu contraseña"
+        />
+
+        <!-- <button [routerLink]="['/principal']"> -->
+        <button type="submit">
+            Iniciar Sesión
+        </button>
+    </form>
+
+    <p>¿No tienes cuenta?
+
+    <br>
+
+      <button [routerLink]="['/registro']">
+        REGISTRATE
+        </button>
+    </p>
+
+</div>
+

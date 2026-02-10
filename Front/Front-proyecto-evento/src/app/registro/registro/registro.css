@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Patria";
+  src: url("../../fonts/Patria_Bold.otf");
+}
+
+@font-face {
+  font-family: "Texto";
+  src: url("../../fonts/NotoSans_Condensed-Black.ttf");
+}
+
+
+.container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+h1{
+    text-align: center;
+    color: #7A1F2B;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-family: 'Patria', sans-serif;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 6px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #5C1620;
+    font-family: 'Texto', sans-serif;
+}
+
+input{
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 90%;
+}
+
+input:focus{
+    border-color: #7a1f28;
+    box-shadow: 0 0 8px rgba(122, 31, 40, 0.3);
+}
+
+
+
+button{
+    margin-top: 20px;
+    padding: 12PX;
+    background-color: #5C1620;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover{
+    background-color: #9b2247;
+    transform: translateY(-2px);
+}
+
+button:disabled{
+    background-color: #A13A47;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+

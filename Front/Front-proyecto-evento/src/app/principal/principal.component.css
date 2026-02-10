@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Patria";
+  src: url("../fonts/Patria_Bold.otf");
+}
+
+@font-face {
+  font-family: "Texto";
+  src: url("../fonts/NotoSans_Condensed-Black.ttf");
+}
+
+
+.container {
+    max-width: 1020px;
+    height: 100vh;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+h1{
+    text-align: center;
+    color: #7A1F2B;
+    margin-bottom: 100px;
+    font-weight: 600;
+    font-family: 'Patria', sans-serif;
+}
+
+h2{
+    color: #161a1d;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-family: 'Patria', sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li{
+    display: flex;
+    padding: 8px 60px;
+}
+
+
+.evento{
+    background: #98989A;
+    width: 350px;
+    height: 100px;
+    display: flex;          
+    justify-content: center;   
+    align-items: center;   
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
