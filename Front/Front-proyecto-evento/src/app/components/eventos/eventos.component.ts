@@ -36,7 +36,7 @@ export class EventosComponent {
         this.router.navigate(['/principal']);
       },
       error: () => {
-        this.mensaje = 'Correo o contraseña incorrectos';
+        alert('Correo o contraseña incorrectos');
       }
     });
   }

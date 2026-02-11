@@ -1,27 +1,62 @@
 <div class="container">
     <h1>Registro de Usuario</h1>
     
-<form>
+<form (ngSubmit)="registrar()">
     <label for="nombre">Nombre: <br>
-        <input type="text" required placeholder="Ingresa tu nombre">
+        <input
+        type="text"
+        [(ngModel)]="nombre"
+        name="nombre"
+        required
+        placeholder="Ingresa tu nombre"
+        >
     </label>
 
     <label for="apellido">Apellido: <br>
-        <input type="text" required placeholder="Ingresa tu apellido">
+        <input
+        type="text"
+        [(ngModel)]="apellido"
+        name="apellido"
+        required
+        placeholder="Ingresa tu apellido"
+        >
     </label>
 
     <label for="correo">Correo Electrónico: <br>
-    <input type="email" required placeholder="Ingresa tu correo electrónico">
+    <input type="email"
+    [(ngModel)]="email"
+    name="email"
+    required
+    placeholder="Ingresa tu correo electrónico"
+    >
     </label>
 
     <label for="contraseña">Contraseña: <br>
-        <input type="password" required placeholder="Ingresa tu contraseña">
+        <input type="password"
+        [(ngModel)]="ps"
+        name="ps"
+        required
+        placeholder="Ingresa tu contraseña"
+        >
     </label>
 
 
-    <button [routerLink]="['/eventos']">
+    <button type="submit">
       Registrarse
     </button>
-
 </form>
+
+<p *ngIf="mensaje" style="color: green;">
+{{ mensaje }}
+</p>
+
+
+<p *ngIf="error" style="color: red;">
+{{ error }}
+</p>
+
+<button [routerLink]="['/evento']">
+    VOLVER
+</button>
+
 </div>
