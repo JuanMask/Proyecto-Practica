@@ -12,8 +12,8 @@ public class SwaggerConfig {
     public OpenAPI apiInfo() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API prueba")
-                        .description("API de prueba con Swagger")
+                        .title("Eventos")
+                        .description("los usuarios pueden registrarse a diferentes actividades culturales, deportivas, etc; asi como crear eventos propios.")
                         .version("1.0"));
     }
 }
