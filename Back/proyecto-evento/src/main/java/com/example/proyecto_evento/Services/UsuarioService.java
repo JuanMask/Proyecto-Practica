@@ -216,5 +216,14 @@ public class UsuarioService implements UsuarioRepository{
         // TODO Auto-generated method stub
         usuarioRepository.insertarUsuario(nombre, apellido, email, password);
     }
+
+    @Override
+    public Integer findIdByUsername(String nombre) {
+        // TODO Auto-generated method stub
+        return usuarioRepository.findIdByUsername(nombre);
+    }
+
+
+
 }
  
