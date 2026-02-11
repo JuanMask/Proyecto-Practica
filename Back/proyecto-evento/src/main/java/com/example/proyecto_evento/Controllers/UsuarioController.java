@@ -34,10 +34,18 @@ public class UsuarioController {
     public UsuarioService usuarioService;
 
    @PostMapping("/reg")// Guardar usuario
-    public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona){
+   /*  public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona) */
+   public ResponseEntity<String> GuardaUsuario(@RequestBody usuario persona){
         //System.out.println("Persona a registrar: "+persona.getNombre()+" "+persona.getApellido()+ " "+ persona.getEmail()+" "+persona.getPs());
-        usuarioService.insertarUsuario(persona.getNombre(),persona.getApellido(), persona.getEmail(), persona.getPs());
-        return ResponseEntity.ok(persona);           
+        usuarioService.insertarUsuario(
+            persona.getNombre(),
+            persona.getApellido(),
+            persona.getEmail(),
+            persona.getPs()
+        );
+
+        /* return ResponseEntity.ok(persona); */
+        return ResponseEntity.ok("OK");           
     }
 
     @PostMapping("/log")// Comprobar usuario
