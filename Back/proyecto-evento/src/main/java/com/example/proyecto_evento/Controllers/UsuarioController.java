@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.proyecto_evento.DTOS.UsuarioDTO;
+import com.example.proyecto_evento.DTOS.UsuarioRegDTO;
 import com.example.proyecto_evento.Models.usuario;
 import com.example.proyecto_evento.Services.UsuarioService;
 
@@ -34,14 +36,14 @@ public class UsuarioController {
     public UsuarioService usuarioService;
 
    @PostMapping("/reg")// Guardar usuario
-    public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona){
+    public ResponseEntity <UsuarioRegDTO> GuardaUsuario(@NotBlank @RequestBody UsuarioRegDTO persona){
         //System.out.println("Persona a registrar: "+persona.getNombre()+" "+persona.getApellido()+ " "+ persona.getEmail()+" "+persona.getPs());
         usuarioService.insertarUsuario(persona.getNombre(),persona.getApellido(), persona.getEmail(), persona.getPs());
         return ResponseEntity.ok(persona);           
     }
 
     @PostMapping("/log")// Comprobar usuario
-    public ResponseEntity CompruebaUsuario( @RequestBody usuario persona){//@RequestParam("correo") String correo, @RequestParam("ps") String ps) {
+    public ResponseEntity CompruebaUsuario( @RequestBody UsuarioDTO persona){//@RequestParam("correo") String correo, @RequestParam("ps") String ps) {
     //System.out.println("email:"+ persona.getEmail() + " ps:"+ persona.getPs());
         if(usuarioService.login(persona.getEmail(), persona.getPs())){
             System.out.println("contraseña valida");               
@@ -51,7 +53,6 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }        
     }
-
     @GetMapping("/listar")// Listar todas las personas en la bd
     public ResponseEntity<List<String>> ListarUsuarios(){        
         List <usuario> personas= new ArrayList<>();

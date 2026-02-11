@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.proyecto_evento.DTOS.CrearEventoDTO;
 import com.example.proyecto_evento.Models.evento;
 import com.example.proyecto_evento.Models.usuario;
 import com.example.proyecto_evento.Services.EventoService;
+import com.example.proyecto_evento.Services.UsuarioService;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,17 +31,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/evento")
 public class EventoController {
     @Autowired
-    public EventoService eventoService;
+    private EventoService eventoService;
+    @Autowired
+    private UsuarioService usuarioService;
     //Modificarla para que lo guarde
-   @PostMapping("/cEvento")// Crear Evento
-    public ResponseEntity <evento> GuardaUsuario( @RequestBody evento eve){
-        System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFecha_creacion() + " " + eve.getFecha_evento() + " " + eve.getId_evento());        
-        usuario usuTemp= eve.getUsu();
-        int idt =usuTemp.getId_usuario();
-        eventoService.insertarEvento(eve.getNombre(), eve.getDescripcion(), eve.getFecha_evento(), idt);
+  
+ @PostMapping("/cEvento")// Crear Evento
+    public ResponseEntity <CrearEventoDTO> CreaEvento( @RequestBody CrearEventoDTO eve){
+        System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFechaEvento() + " " + eve.getCreador());        
+        int idt = usuarioService.findIdByUsername(eve.getCreador());//.findById(eve.getCreador());
+        eventoService.insertarEvento(eve.getNombre(), eve.getDescripcion(), eve.getFechaEvento(), idt);
         return ResponseEntity.ok(eve);           
     }
-
     @GetMapping("/listar")//mostrar eventos
      public ResponseEntity<List<evento>> ListarEventos(){        
         List <evento> eventos= new ArrayList<>();

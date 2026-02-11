@@ -31,4 +31,10 @@ public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
     )
     void insertarUsuario(String nombre,String apellido, String email, String ps);
 
+
+ @Query(value = "SELECT id_usurio FROM usuario WHERE nombre = ?1", nativeQuery = true)
+    Integer findIdByUsername(String nombre);
+
+
+
 }
