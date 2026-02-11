@@ -26,13 +26,8 @@ public interface EventoRepository extends JpaRepository<evento, Integer>{
     )
     void insertarEvento(String nombre, String descripcion, Date fecha_evento, int id_creador);
 
-   /*@Modifying
-    @Transactional
-    @Query(value="""
-        DELETE FROM evento WHERE nombre = :nombreEve)
-        """, nativeQuery =true
-        )
-    void deleteByNombre(String nombreEve);*/
+   
+
 
 
 }

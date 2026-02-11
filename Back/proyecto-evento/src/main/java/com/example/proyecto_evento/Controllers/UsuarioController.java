@@ -69,6 +69,10 @@ public class UsuarioController {
         }
      }
 
+//Metodo usuario se registra a un evento
+
+//metodo usuario modifica su asistencia a un evento
+
 
 
 }

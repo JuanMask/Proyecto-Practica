@@ -1,12 +1,15 @@
 package com.example.proyecto_evento.Models;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class evento {
@@ -16,8 +19,6 @@ public class evento {
     @ManyToOne
     @JoinColumn(name = "id_creador")
     private usuario usu;
-
-    
     //private int id_creador; // creador del evento
     private String nombre;
     private String descripcion;

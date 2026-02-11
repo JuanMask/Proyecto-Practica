@@ -203,4 +203,15 @@ public class AsistenciaService implements AsistenciaRepository{
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
+    @Override
+    public void confirmarAsistencia(int idUsuario, int idEvento) {
+        // TODO Auto-generated method stub
+        asistenciaRepository.confirmarAsistencia(idUsuario, idEvento);
+    }
+
+    public void actualizaAsistencia(Integer idUsuario, Integer idEvento, Boolean estado) {
+        // TODO Auto-generated method stub
+        asistenciaRepository.actualizaAsistencia(idUsuario, idEvento, estado);
+    }
+
 }
