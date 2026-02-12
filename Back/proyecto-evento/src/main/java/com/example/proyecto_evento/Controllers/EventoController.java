@@ -82,7 +82,7 @@ public class EventoController {
                 evento  p= eventos.get(i);
                 pAsist.add(p.getNombre() + " " + p.getDescripcion() + " " + p.getFecha_creacion() + " " + p.getFecha_evento() + " " + p.getId_evento());
             }
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(eventos);
         }else{
             return ResponseEntity.notFound().build();
         }
@@ -105,3 +105,4 @@ public class EventoController {
 
 
 }
+
