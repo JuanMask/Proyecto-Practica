@@ -95,7 +95,7 @@ public class UsuarioController {
                 usuario  p= personas.get(i);
                 pAsist.add(p.getNombre() + " " + p.getApellido());
             }
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(pAsist);
         }else{
             
             return ResponseEntity.notFound().build();
@@ -115,3 +115,4 @@ public ResponseEntity ModificarAsistencia(@RequestBody AsistenciaDTO asistenciaD
 
 
 }
+
