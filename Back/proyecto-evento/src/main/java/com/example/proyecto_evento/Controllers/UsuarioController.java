@@ -13,16 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.proyecto_evento.DTOS.AsistenciaDTO;
 import com.example.proyecto_evento.DTOS.UsuarioDTO;
 import com.example.proyecto_evento.DTOS.UsuarioRegDTO;
 import com.example.proyecto_evento.Models.usuario;
+import com.example.proyecto_evento.Services.AsistenciaService;
 import com.example.proyecto_evento.Services.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -30,14 +35,32 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 @RequestMapping("/usuario")
 @CrossOrigin(origins= "http://localhost:4200")
+@Tag(name = "Usuarios", description = "Endpoints de gestión de usuarios: Registro, Inicio de sesion.")
 public class UsuarioController {
     
     @Autowired
     public UsuarioService usuarioService;
 
    @PostMapping("/reg")// Guardar usuario
+<<<<<<< HEAD
    public ResponseEntity <String> GuardaUsuario(@RequestBody UsuarioRegDTO persona){
+=======
+<<<<<<< HEAD
+     @Operation(summary = "Registro de un usuario a la api.", description = "Devuelve una OK cuando el registro se ha completado.")
+=======
+<<<<<<< HEAD
+   /*  public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona) */
+   public ResponseEntity<String> GuardaUsuario(@RequestBody usuario persona){
+=======
+>>>>>>> 89b73ed97a3cd4420bb92fa0741381c1a5aaa3ce
+    public ResponseEntity <UsuarioRegDTO> GuardaUsuario(@NotBlank @RequestBody UsuarioRegDTO persona){
+>>>>>>> c9ce7ac024023fd304fb8f2e78a7f4d9fe8218b8
+>>>>>>> b36b5c59ee75d96f72fcb038e159e13ea45037ae
         //System.out.println("Persona a registrar: "+persona.getNombre()+" "+persona.getApellido()+ " "+ persona.getEmail()+" "+persona.getPs());
+<<<<<<< HEAD
+        usuarioService.insertarUsuario(persona.getNombre(),persona.getApellido(), persona.getEmail(), persona.getPs());
+        return ResponseEntity.ok().build();
+=======
         usuarioService.insertarUsuario(
             persona.getNombre(),
             persona.getApellido(),
@@ -47,11 +70,12 @@ public class UsuarioController {
 
         /* return ResponseEntity.ok(persona); */
         return ResponseEntity.ok("OK");           
+>>>>>>> 89b73ed97a3cd4420bb92fa0741381c1a5aaa3ce
     }
 
     @PostMapping("/log")// Comprobar usuario
-    public ResponseEntity CompruebaUsuario( @RequestBody UsuarioDTO persona){//@RequestParam("correo") String correo, @RequestParam("ps") String ps) {
-    //System.out.println("email:"+ persona.getEmail() + " ps:"+ persona.getPs());
+        @Operation(summary = "inicio de session de un usuario.", description = "Devuelve una OK cuando el usuario ha sido autenticado.")
+    public ResponseEntity CompruebaUsuario( @RequestBody UsuarioDTO persona){
         if(usuarioService.login(persona.getEmail(), persona.getPs())){
             System.out.println("contraseña valida");               
                 return ResponseEntity.ok().build();
@@ -61,6 +85,7 @@ public class UsuarioController {
         }        
     }
     @GetMapping("/listar")// Listar todas las personas en la bd
+        @Operation(summary = "Lista a los usuarios registrados.", description = "Devuelve una lista de usuarios que se han registrado.")
     public ResponseEntity<List<String>> ListarUsuarios(){        
         List <usuario> personas= new ArrayList<>();
         List <String> pAsist = new ArrayList<>(); 
@@ -70,16 +95,22 @@ public class UsuarioController {
                 usuario  p= personas.get(i);
                 pAsist.add(p.getNombre() + " " + p.getApellido());
             }
-            return ResponseEntity.ok(pAsist);
+                return ResponseEntity.ok().build();
         }else{
             
             return ResponseEntity.notFound().build();
         }
      }
 
-//Metodo usuario se registra a un evento
+
 
 //metodo usuario modifica su asistencia a un evento
+/*@PutMapping("/modAsistencia")
+public ResponseEntity ModificarAsistencia(@RequestBody AsistenciaDTO asistenciaDTO) {
+    AsistenciaService asistenciaService = null;
+    asistenciaService.actualizaAsistencia(asistenciaDTO.getIdUsuario(), asistenciaDTO.getIdEvento(), asistenciaDTO.getEstado());
+    return ResponseEntity.ok(null);
+}*/
 
 
 
