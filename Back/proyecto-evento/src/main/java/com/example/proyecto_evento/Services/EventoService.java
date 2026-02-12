@@ -17,8 +17,32 @@ import com.example.proyecto_evento.Models.evento;
 import com.example.proyecto_evento.Repositories.EventoRepository;
 
 @Service
-public class EventoService implements EventoRepository{
+//public class EventoService implements EventoRepository{
+public class EventoService{
+
+    //Insertar evento
     @Autowired
+    private EventoRepository eventoRepository;
+
+    public void insertarEvento(
+        String nombre,
+        String descripcion,
+        Date fecha_evento,
+        int id_creador
+    ){
+        eventoRepository.insertarEvento((nombre), descripcion, fecha_evento, id_creador);
+    }
+
+    public List<evento> findAll(){
+        return eventoRepository.findAll();
+    }
+
+    public void deleteAllById(Integer id){
+        eventoRepository.deleteById(id);
+    }
+
+
+    /* @Autowired
     public EventoRepository eventoRepository;
     @Override
     public void flush() {
@@ -205,7 +229,7 @@ public class EventoService implements EventoRepository{
     public void insertarEvento(String nombre, String descripcion, Date fecha_evento, int id_creador) {
         // TODO Auto-generated method stub
         eventoRepository.insertarEvento(nombre, descripcion, fecha_evento, id_creador);
-    }
+    } */
 
    
 

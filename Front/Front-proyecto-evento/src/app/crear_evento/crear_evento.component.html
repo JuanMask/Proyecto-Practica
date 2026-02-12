@@ -1,21 +1,47 @@
 <div class="container">
     <h1>Crear Evento</h1>
 
-    <form>
+    <form (ngSubmit)="crearEvento()">
         <label for="nombre">Nombre del Evento: <br>
-        <input type="text" required placeholder="Ingresa el nombre del evento">
+        <input type="text"
+            required
+            [(ngModel)]="nombre"
+            name="nombre"
+            placeholder="Ingresa el nombre del evento"
+        >
     </label>
 
     <label for="descripcion">Descripción del Evento: <br>
-        <textarea required placeholder="Ingresa la descripción del evento"></textarea>
+        <textarea
+            required
+            [(ngModel)]="descripcion"
+            name="descripcion"
+            placeholder="Ingresa la descripción del evento">
+        </textarea>
 
     </label>
 
     <label for="fecha">Fecha del Evento: <br>
-        <input type="date" required>
+        <input
+        type="date"
+        required
+        [(ngModel)]="fechaEvento"
+        name="fechaEvento"
+        >
     </label>
 
-    <button [routerLink]="['/principal']">
+    <br><br>
+    <label>
+        Creador (correo): <br>
+        <input
+            type="text"
+            required
+            [(ngModel)]="creador"
+            name="creador"
+        >
+    </label>
+
+    <button type="submit">
       Crear Evento
     </button>
     </form>

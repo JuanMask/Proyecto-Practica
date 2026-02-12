@@ -218,10 +218,16 @@ public class UsuarioService implements UsuarioRepository{
     }
 
     @Override
+    public int findIdByEmail(String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findIdByEmail'");
+    }
+
+   /*  @Override
     public Integer findIdByUsername(String nombre) {
         // TODO Auto-generated method stub
         return usuarioRepository.findIdByUsername(nombre);
-    }
+    } */
 
 
 

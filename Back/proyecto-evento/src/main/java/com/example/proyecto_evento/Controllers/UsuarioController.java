@@ -36,12 +36,7 @@ public class UsuarioController {
     public UsuarioService usuarioService;
 
    @PostMapping("/reg")// Guardar usuario
-<<<<<<< HEAD
-   /*  public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona) */
-   public ResponseEntity<String> GuardaUsuario(@RequestBody usuario persona){
-=======
-    public ResponseEntity <UsuarioRegDTO> GuardaUsuario(@NotBlank @RequestBody UsuarioRegDTO persona){
->>>>>>> c9ce7ac024023fd304fb8f2e78a7f4d9fe8218b8
+   public ResponseEntity <String> GuardaUsuario(@RequestBody UsuarioRegDTO persona){
         //System.out.println("Persona a registrar: "+persona.getNombre()+" "+persona.getApellido()+ " "+ persona.getEmail()+" "+persona.getPs());
         usuarioService.insertarUsuario(
             persona.getNombre(),

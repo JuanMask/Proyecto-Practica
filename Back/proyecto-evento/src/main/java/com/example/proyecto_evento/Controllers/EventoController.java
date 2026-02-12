@@ -37,12 +37,26 @@ public class EventoController {
     //Modificarla para que lo guarde
   
  @PostMapping("/cEvento")// Crear Evento
-    public ResponseEntity <CrearEventoDTO> CreaEvento( @RequestBody CrearEventoDTO eve){
-        System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFechaEvento() + " " + eve.getCreador());        
-        int idt = usuarioService.findIdByUsername(eve.getCreador());//.findById(eve.getCreador());
-        eventoService.insertarEvento(eve.getNombre(), eve.getDescripcion(), eve.getFechaEvento(), idt);
-        return ResponseEntity.ok(eve);           
+    //public ResponseEntity <CrearEventoDTO> CreaEvento( @RequestBody CrearEventoDTO eve){
+    public ResponseEntity <?> CreaEvento( @RequestBody CrearEventoDTO eve){
+        //System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFechaEvento() + " " + eve.getCreador());        
+        try {
+            //int idt = usuarioService.findIdByUsername(eve.getCreador());//.findById(eve.getCreador());
+            int idt = usuarioService.findIdByEmail(eve.getCreador());
+        eventoService.insertarEvento(
+            eve.getNombre(),
+            eve.getDescripcion(),
+            eve.getFechaEvento(),
+            idt
+        );
+
+        return ResponseEntity.ok("Evento creado correctamente");
+        } catch (Exception e){
+        return ResponseEntity
+            .badRequest()
+            .body("Error al crear evento: " + e.getMessage());
     }
+} 
     @GetMapping("/listar")//mostrar eventos
      public ResponseEntity<List<evento>> ListarEventos(){        
         List <evento> eventos= new ArrayList<>();
@@ -59,7 +73,7 @@ public class EventoController {
         }
      }
     
-    @DeleteMapping("/dEvento/{id}") //Eliminar evento
+    /* @DeleteMapping("/dEvento/{id}") //Eliminar evento
     public ResponseEntity<Void> EliminarEvento(@PathVariable("id") int id_eve) {
         evento eve= new evento();
         String ids= ""+eve.getId_evento()+" "+id_eve;
@@ -67,7 +81,7 @@ public class EventoController {
 
         eventoService.deleteById(id_eve );
         return ResponseEntity.ok().build();
-    }
+    } */
 
 
 

@@ -32,8 +32,11 @@ public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
     void insertarUsuario(String nombre,String apellido, String email, String ps);
 
 
- @Query(value = "SELECT id_usurio FROM usuario WHERE nombre = ?1", nativeQuery = true)
-    Integer findIdByUsername(String nombre);
+ /* @Query(value = "SELECT id_usuario FROM usuario WHERE nombre = ?1", nativeQuery = true)
+    Integer findIdByUsername(String nombre); */
+    //Es mejor buscar persona por el email (Asi evitamos problema con personas que tengan el mismo nombre)
+    @Query(value = "SELECT id_usuario FROM usuario WHERE email = :email", nativeQuery = true)
+    int findIdByEmail(@Param("email") String email);
 
 
 
