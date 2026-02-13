@@ -57,7 +57,7 @@ public class AsistenciaController {
         List <asistencia> asis= new ArrayList<>();
         asis =asistenciaService.findAll();
         if (!asis.isEmpty()){
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(asis);
         }else{
             return ResponseEntity.notFound().build();
         }
@@ -73,3 +73,4 @@ public class AsistenciaController {
      }
     
 }
+
