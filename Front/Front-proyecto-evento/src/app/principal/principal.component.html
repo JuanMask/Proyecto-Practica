@@ -39,27 +39,52 @@
         <h1>Página Principal</h1>
 
     
-        <h2>TUS EVENTOS</h2>
-        <div>
-            <section>
+        <h2>EVENTOS DISPONIBLES</h2>
+        <div class="grid-eventos"> 
+            <section *ngFor="let evento of eventos"
+            class="card-evento">
                 <div class="evento">
-                    <h3>PARTIDO DE FUTBOL</h3>
+                    <!-- <h3>PARTIDO DE FUTBOL</h3> -->
+                    <h3>{{ evento.nombre }}</h3>
                 </div>
                 
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 11 11"><path d="M5.52 0L4 2v1h3V2L5.52 0zM4 4L2 5v5h7V5L7 4H4zm7 1.5V10h-1V5.5a.5.5 0 0 1 1 0zm-10 0V10H0V5.5a.5.5 0 0 1 1 0z" fill="#dc2626"/></svg>
-                    Partido de futbol entre edificio Q vs edificio R
+                    {{ evento.descripcion }}
+                    <!-- Partido de futbol entre edificio Q vs edificio R -->
                 </p>
 
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"><path fill="#dc2626" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699M1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756zm5.267 6.877v1.666H5v-1.666zm4.166 0v1.666H9.167v-1.666zm4.167 0v1.666h-1.667v-1.666zm-8.333-3.977v1.666H5v-1.666zm4.166 0v1.666H9.167v-1.666zm4.167 0v1.666h-1.667v-1.666zM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0z"/></svg>
-                    Fecha: 2026-05-15
+                    <!-- Fecha: 2026-05-15 -->
+                    Fecha: {{ evento.fecha_evento | date:'dd/MM/yyyy' }}
                 </p>
 
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#dc2626" d="M12 23C5.925 23 1 18.075 1 12S5.925 1 12 1s11 4.925 11 11s-4.925 11-11 11m1-17.5h-2v6.914l4 4L16.414 15L13 11.586z"/></svg>
-                    Hora: 18:00
-                </p>
+                <div class="mt-2">
+                    <button
+                    *ngIf="!evento.asiste"
+                    class="btn-asistir"
+                    (click)="confirmarAsistencia(evento.idEvento)"
+                    >
+                       Confirmar Asistencia 
+                    </button>
+
+                    <div *ngIf="evento.asiste"
+                    class="confirmado-box"
+                    >
+                    Asistencia Confirmada
+                    <br>
+                        <button class="btn-cancelar"
+                        (click)="cambiarAsistencia(evento, false)"
+                        >
+                            Cancelar Asistencia
+                        </button>
+                    </div>
+
+
+                </div>
+
+    
 
             </section>
         </div>

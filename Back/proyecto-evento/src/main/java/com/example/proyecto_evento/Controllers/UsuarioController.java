@@ -42,35 +42,16 @@ public class UsuarioController {
     public UsuarioService usuarioService;
 
    @PostMapping("/reg")// Guardar usuario
-<<<<<<< HEAD
-   public ResponseEntity <String> GuardaUsuario(@RequestBody UsuarioRegDTO persona){
-=======
-<<<<<<< HEAD
-     @Operation(summary = "Registro de un usuario a la api.", description = "Devuelve una OK cuando el registro se ha completado.")
-=======
-<<<<<<< HEAD
-   /*  public ResponseEntity <usuario> GuardaUsuario(@NotBlank @RequestBody usuario persona) */
-   public ResponseEntity<String> GuardaUsuario(@RequestBody usuario persona){
-=======
->>>>>>> 89b73ed97a3cd4420bb92fa0741381c1a5aaa3ce
-    public ResponseEntity <UsuarioRegDTO> GuardaUsuario(@NotBlank @RequestBody UsuarioRegDTO persona){
->>>>>>> c9ce7ac024023fd304fb8f2e78a7f4d9fe8218b8
->>>>>>> b36b5c59ee75d96f72fcb038e159e13ea45037ae
+   @Operation(summary = "Registro de un usuario a la api.", description = "Devuelve una OK cuando el registro se ha completado.")
+   public ResponseEntity<String> GuardaUsuario(@RequestBody UsuarioRegDTO persona){
         //System.out.println("Persona a registrar: "+persona.getNombre()+" "+persona.getApellido()+ " "+ persona.getEmail()+" "+persona.getPs());
-<<<<<<< HEAD
-        usuarioService.insertarUsuario(persona.getNombre(),persona.getApellido(), persona.getEmail(), persona.getPs());
-        return ResponseEntity.ok().build();
-=======
         usuarioService.insertarUsuario(
             persona.getNombre(),
             persona.getApellido(),
             persona.getEmail(),
             persona.getPs()
         );
-
-        /* return ResponseEntity.ok(persona); */
-        return ResponseEntity.ok("OK");           
->>>>>>> 89b73ed97a3cd4420bb92fa0741381c1a5aaa3ce
+        return ResponseEntity.ok("OK");
     }
 
     @PostMapping("/log")// Comprobar usuario

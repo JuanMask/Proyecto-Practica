@@ -29,16 +29,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/asistencia")
-@Tag(name = "Asistencia de Usuarios.", description = "Endpoints de gestión de Asistencia a un evento por parte de un usuario: Se actualiza la asistencia de un usuario.")
+//@Tag(name = "Asistencia de Usuarios.", description = "Endpoints de gestión de Asistencia a un evento por parte de un usuario: Se actualiza la asistencia de un usuario.")
 public class AsistenciaController {
    
     @Autowired
     public AsistenciaService asistenciaService;
     
     @PutMapping("/actualiza")//Actualiar asistencia
-    @Operation(summary = "Actualizar la asistencia a un evento de un usuario.", description = "Devuelve una OK cuando la asistencia se ha actualizado.")
-    public ResponseEntity actualizaAsistencia(@RequestBody @Parameter(description = "Datos del usuario a actualizar la asistencia") AsistenciaDTO dto) {
-        this.actAsistencia(dto);     
+    //@Operation(summary = "Actualizar la asistencia a un evento de un usuario.", description = "Devuelve una OK cuando la asistencia se ha actualizado.")
+    //public ResponseEntity<?> actualizaAsistencia(@RequestBody @Parameter(description = "Datos del usuario a actualizar la asistencia") AsistenciaDTO dto) {
+    public ResponseEntity<?> actualizaAsistencia(@RequestBody AsistenciaDTO dto) {
+
+        asistenciaService.actualizaAsistencia(
+            dto.getIdUsuario(),
+            dto.getIdEvento(),
+            dto.getEstado()
+        );
+        
+        //this.actAsistencia(dto);     
         return ResponseEntity.ok().build();
     }
 

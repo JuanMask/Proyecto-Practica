@@ -11,7 +11,7 @@
 
 .container {
     max-width: 1020px;
-    height: 100vh;
+    min-height: 100vh;
     margin: 60px auto;
     padding: 30px;
     background-color: #ffffff;
@@ -57,3 +57,57 @@ li{
     margin-bottom: 20px;
 }
 
+.grid-eventos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card-evento {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-evento:hover{
+    transform: translateY(-5px);
+}
+
+.btn-asistir{
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #7A1F2B;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-asistir:hover{
+    background-color: #5C1720;
+}
+
+.confirmado-box{
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #155724;
+}
+
+.btn-cancelar{
+    margin-top: 8px;
+    padding: 6px 12px;
+    background-color: #c82333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover{
+    background-color: #a71d2a;
+}

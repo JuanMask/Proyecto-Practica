@@ -16,11 +16,12 @@ import com.example.proyecto_evento.Models.asistencia;
 import com.example.proyecto_evento.Repositories.AsistenciaRepository;
 
 @Service
-public class AsistenciaService implements AsistenciaRepository{
+//public class AsistenciaService implements AsistenciaRepository{
+public class AsistenciaService {
     @Autowired
     public AsistenciaRepository asistenciaRepository;
 
-    @Override
+    /* @Override
     public void deleteAllByIdInBatch(Iterable<Integer> ids) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteAllByIdInBatch'");
@@ -87,15 +88,15 @@ public class AsistenciaService implements AsistenciaRepository{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
     }
-
-    @Override
+ */
+   
     public List<asistencia> findAll() {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'findAll'");
         return asistenciaRepository.findAll();
     }
 
-    @Override
+   /*  @Override
     public List<asistencia> findAllById(Iterable<Integer> ids) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
@@ -203,8 +204,7 @@ public class AsistenciaService implements AsistenciaRepository{
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
-    @Override
-    public void confirmarAsistencia(int idUsuario, int idEvento) {
+ */    public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
         // TODO Auto-generated method stub
         asistenciaRepository.confirmarAsistencia(idUsuario, idEvento);
     }

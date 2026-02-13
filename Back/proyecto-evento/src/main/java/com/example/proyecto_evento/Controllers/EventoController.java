@@ -3,7 +3,9 @@ package com.example.proyecto_evento.Controllers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,37 +42,26 @@ public class EventoController {
     //Modificarla para que lo guarde
   
  @PostMapping("/cEvento")// Crear Evento
-<<<<<<< HEAD
-    //public ResponseEntity <CrearEventoDTO> CreaEvento( @RequestBody CrearEventoDTO eve){
+    @Operation(summary = "Creacion de Evento", description = "Devuelve un ok cuando se crea un evento.")
     public ResponseEntity <?> CreaEvento( @RequestBody CrearEventoDTO eve){
-        //System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFechaEvento() + " " + eve.getCreador());        
-        try {
-            //int idt = usuarioService.findIdByUsername(eve.getCreador());//.findById(eve.getCreador());
-            int idt = usuarioService.findIdByEmail(eve.getCreador());
-        eventoService.insertarEvento(
-            eve.getNombre(),
-            eve.getDescripcion(),
-            eve.getFechaEvento(),
-            idt
-        );
-
-        return ResponseEntity.ok("Evento creado correctamente");
-        } catch (Exception e){
-        return ResponseEntity
-            .badRequest()
-            .body("Error al crear evento: " + e.getMessage());
-    }
-} 
-=======
-    @Operation(summary = "Creacion de Evento", description = "Devulve un ok cuando se crea un evento.")
-    public ResponseEntity <CrearEventoDTO> CreaEvento( @RequestBody CrearEventoDTO eve){
         System.out.println("Evento a registrar: "+eve.getNombre() + " " + eve.getDescripcion() + " " + eve.getFechaEvento() + " " + eve.getCreador());        
-        int idt = usuarioService.findIdByUsername(eve.getCreador());//.findById(eve.getCreador());
-        eventoService.insertarEvento(eve.getNombre(), eve.getDescripcion(), eve.getFechaEvento(), idt);
-        return ResponseEntity.ok().build();
+        try {
+            int idt = usuarioService.findIdByEmail(eve.getCreador());
+            eventoService.insertarEvento(
+                eve.getNombre(),
+                eve.getDescripcion(),
+                eve.getFechaEvento(),
+                idt
+            );
+            return ResponseEntity.ok().body(
+                Map.of("mensaje", "Evento creado correctamente")
+            );
+        } catch (Exception e){
+            return ResponseEntity
+                .badRequest()
+                .body("Error al crear evento: " + e.getMessage());
+        }
     }
-
->>>>>>> b36b5c59ee75d96f72fcb038e159e13ea45037ae
     @GetMapping("/listar")//mostrar eventos
     @Operation(summary = "Listado de eventos creados.", description = "Devuelve una Lista de eventos creados.")
      public ResponseEntity<List<evento>> ListarEventos(){        
@@ -82,25 +73,22 @@ public class EventoController {
                 evento  p= eventos.get(i);
                 pAsist.add(p.getNombre() + " " + p.getDescripcion() + " " + p.getFecha_creacion() + " " + p.getFecha_evento() + " " + p.getId_evento());
             }
-                return ResponseEntity.ok().build();
+                //return ResponseEntity.ok().build();
+                return ResponseEntity.ok(eventoService.findAll());
         }else{
             return ResponseEntity.notFound().build();
         }
      }
     
-<<<<<<< HEAD
-    /* @DeleteMapping("/dEvento/{id}") //Eliminar evento
-=======
-    @DeleteMapping("/dEvento/{id}") //Eliminar evento
-    @Operation(summary = "Elimiar evento y su informacion", description = "Devuelve una OK cuando el evento se ha eliminado.")
->>>>>>> b36b5c59ee75d96f72fcb038e159e13ea45037ae
-    public ResponseEntity<Void> EliminarEvento(@PathVariable("id") int id_eve) {
-        evento eve= new evento();
-        String ids= ""+eve.getId_evento()+" "+id_eve;
-        System.out.print(ids );
-        eventoService.deleteById(id_eve );
-        return ResponseEntity.ok().build();
-    } */
+@DeleteMapping("/dEvento/{id}") //Eliminar evento
+@Operation(summary = "Eliminar evento y su informacion", description = "Devuelve una OK cuando el evento se ha eliminado.")
+public ResponseEntity<Void> EliminarEvento(@PathVariable("id") int id_eve) {
+    evento eve= new evento();
+    String ids= ""+eve.getId_evento()+" "+id_eve;
+    System.out.print(ids );
+    eventoService.deleteAllById(id_eve );
+    return ResponseEntity.ok().build();
+}
 
 
 
