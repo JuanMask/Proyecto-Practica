@@ -33,8 +33,8 @@ public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
     void insertarUsuario(String nombre,String apellido, String email, String ps);
 
 
- @Query(value = "SELECT id_usurio FROM usuario WHERE nombre = ?1", nativeQuery = true)
-    Integer findIdByUsername(String nombre);
+ @Query(value = "SELECT id_usurio FROM usuario WHERE email = ?1", nativeQuery = true)
+    Integer findIdByUsername(String email);
 
 
 
@@ -42,3 +42,4 @@ public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
     List<String> findAllEmail();
 
 }
+
