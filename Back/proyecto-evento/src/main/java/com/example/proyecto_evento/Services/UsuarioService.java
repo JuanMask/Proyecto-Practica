@@ -21,15 +21,7 @@ public class UsuarioService implements UsuarioRepository{
     @Autowired
     public UsuarioRepository usuarioRepository;
 
-
-<<<<<<< HEAD
-    public Optional<usuario> findByUsernameAndPassword(String email, String ps){
-    return usuarioRepository.findByUsernameAndPassword(email, ps);
-}
-    /* @Override
-=======
     @Override
->>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
     public void flush() {
         // TODO Auto-generated method stub
         usuarioRepository.flush();
@@ -210,9 +202,10 @@ public class UsuarioService implements UsuarioRepository{
     }
 
     @Override
-    public Optional<usuario> findByUsernameAndPassword(String nombre, String ps) {
+    public Optional<usuario> findByUsernameAndPassword(String email, String ps) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByUsernameAndPassword'");
+        //throw new UnsupportedOperationException("Unimplemented method 'findByUsernameAndPassword'");
+         return usuarioRepository.findByUsernameAndPassword(email, ps);
     }
     public boolean login(String email, String ps) {
         return usuarioRepository.findByUsernameAndPassword(email, ps).isPresent();

@@ -52,7 +52,6 @@ public class UsuarioController {
     }
 
     @PostMapping("/log")// Comprobar usuario
-<<<<<<< HEAD
         //@Operation(summary = "inicio de session de un usuario.", description = "Devuelve una OK cuando el usuario ha sido autenticado.")
     public ResponseEntity<?> CompruebaUsuario( @RequestBody UsuarioDTO persona){
         
@@ -67,21 +66,6 @@ public class UsuarioController {
             System.out.println("contraseña erronea");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }        
-=======
-        @Operation(summary = "inicio de session de un usuario.", description = "Devuelve una OK cuando el usuario ha sido autenticado.")            
-        @ApiResponses(value = { 
-            @ApiResponse(responseCode = "200",  description = "Usuario encontrado.", content = @Content(schema = @Schema(implementation = usuario.class))),
-            @ApiResponse(responseCode = "400", description = "Usuario no encontrado, no existe o se equivoco al ingresar algun dato.")
-                })        
-    public ResponseEntity<Void> CompruebaUsuario(@Valid @RequestBody UsuarioDTO persona){
-            if(usuarioService.login(persona.getEmail(), persona.getPs())){
-                //System.out.println("contraseña valida");                              
-                return ResponseEntity.ok().build();
-            }else{
-                //System.out.println("contraseña erronea");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-            } 
->>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
     }
     @GetMapping("/listar")// Listar todas las personas en la bd
         @Operation(summary = "Lista los nombres y apellidos de los usuarios registrados.", description = "Devuelve una lista de los nombres y apellidos de los usuarios que se han registrado.")      

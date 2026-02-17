@@ -99,15 +99,9 @@ public class AsistenciaService implements AsistenciaRepository{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
     }
-<<<<<<< HEAD
- */
+ 
    
     /* public List<asistencia> findAll() {
-=======
-
-    @Override
-    public List<asistencia> findAll() {
->>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'findAll'");
         return asistenciaRepository.findAll();
@@ -221,12 +215,7 @@ public class AsistenciaService implements AsistenciaRepository{
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
-<<<<<<< HEAD
- */    /* public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
-=======
-    @Override
-    public void confirmarAsistencia(int idUsuario, int idEvento) {
->>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
+    /* public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
         // TODO Auto-generated method stub
         asistenciaRepository.confirmarAsistencia(idUsuario, idEvento);
     }

@@ -61,15 +61,9 @@ public class EventoController {
             for(int i=0; i<eventos.size(); i++){
                 evento  p= eventos.get(i);
                 pAsist.add(p.getNombre() + " " + p.getDescripcion() + " " + p.getFecha_creacion() + " " + p.getFecha_evento() + " " + p.getId_evento());
-<<<<<<< HEAD
     }
         return ResponseEntity.ok(eventos);
 }else{
-=======
-            }
-                return ResponseEntity.ok(eventos);
-        }else{
->>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
             return ResponseEntity.notFound().build();
         }
      }
