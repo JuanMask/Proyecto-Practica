@@ -19,7 +19,19 @@ import com.example.proyecto_evento.Repositories.AsistenciaRepository;
 //public class AsistenciaService implements AsistenciaRepository{
 public class AsistenciaService {
     @Autowired
-    public AsistenciaRepository asistenciaRepository;
+    private AsistenciaRepository asistenciaRepository;
+
+    public void confirmarAsistencia(Integer idEvento, Integer idUsuario){
+        asistenciaRepository.confirmarAsistencia(idEvento, idUsuario);
+    }
+
+    public void actualizaAsistencia(Integer idUsuario, Integer idEvento, Boolean estado){
+        asistenciaRepository.actualizaAsistencia(idUsuario, idEvento, estado);
+    }
+
+    public List<asistencia> findAll(){
+        return asistenciaRepository.findAll();
+    }
 
     /* @Override
     public void deleteAllByIdInBatch(Iterable<Integer> ids) {
@@ -90,11 +102,11 @@ public class AsistenciaService {
     }
  */
    
-    public List<asistencia> findAll() {
+    /* public List<asistencia> findAll() {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'findAll'");
         return asistenciaRepository.findAll();
-    }
+    } */
 
    /*  @Override
     public List<asistencia> findAllById(Iterable<Integer> ids) {
@@ -204,7 +216,7 @@ public class AsistenciaService {
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
- */    public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
+ */    /* public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
         // TODO Auto-generated method stub
         asistenciaRepository.confirmarAsistencia(idUsuario, idEvento);
     }
@@ -212,6 +224,6 @@ public class AsistenciaService {
     public void actualizaAsistencia(Integer idUsuario, Integer idEvento, Boolean estado) {
         // TODO Auto-generated method stub
         asistenciaRepository.actualizaAsistencia(idUsuario, idEvento, estado);
-    }
+    } */
 
 }

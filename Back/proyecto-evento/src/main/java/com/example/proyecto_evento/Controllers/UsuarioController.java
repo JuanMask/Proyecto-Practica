@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/usuario")
@@ -55,11 +57,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/log")// Comprobar usuario
-        @Operation(summary = "inicio de session de un usuario.", description = "Devuelve una OK cuando el usuario ha sido autenticado.")
-    public ResponseEntity CompruebaUsuario( @RequestBody UsuarioDTO persona){
-        if(usuarioService.login(persona.getEmail(), persona.getPs())){
+        //@Operation(summary = "inicio de session de un usuario.", description = "Devuelve una OK cuando el usuario ha sido autenticado.")
+    public ResponseEntity<?> CompruebaUsuario( @RequestBody UsuarioDTO persona){
+        
+        Optional<usuario> user = usuarioService
+        .findByUsernameAndPassword(persona.getEmail(), persona.getPs());
+        
+        
+        if(user.isPresent()){
             System.out.println("contraseña valida");               
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(user.get());
         }else{
             System.out.println("contraseña erronea");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

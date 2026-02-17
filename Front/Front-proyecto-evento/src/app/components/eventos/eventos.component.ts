@@ -31,9 +31,10 @@ export class EventosComponent {
       ps: this.ps
     };
 
-    this.http.post(url, body).subscribe({
-      next: () => {
-        this.router.navigate(['/principal']);
+    this.http.post<any>(url, body).subscribe({
+      next: (response) => {
+        this.router.navigate(['/principal']),
+        localStorage.setItem("idUsuario", response.id_usuario);
       },
       error: () => {
         alert('Correo o contraseña incorrectos');

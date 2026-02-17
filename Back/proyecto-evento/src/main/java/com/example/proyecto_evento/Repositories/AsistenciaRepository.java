@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.proyecto_evento.Models.asistencia;
 
 import jakarta.transaction.Transactional;
+import org.springframework.data.repository.query.Param;
 
 public interface AsistenciaRepository extends JpaRepository <asistencia, Integer>{
 
@@ -21,7 +22,12 @@ public interface AsistenciaRepository extends JpaRepository <asistencia, Integer
       """,
       nativeQuery = true
     )
-    void confirmarAsistencia(int idUsuario, int idEvento);
+    //void confirmarAsistencia(int idUsuario, int idEvento);
+    void confirmarAsistencia(
+      @Param("idEvento") Integer idEvento,
+      @Param("idUsuario") Integer idUsuario
+    );
+
 
     @Modifying
     @Transactional

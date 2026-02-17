@@ -27,8 +27,11 @@ export class PrincipalComponent implements OnInit {
     this.http.get<any[]>('http://localhost:8080/evento/listar')
     .subscribe({
       next: (data) => {
-        this.eventos = data;
-        asiste: false
+        this.eventos = data.map((e:any) => ({
+          ...e,
+          asiste: false
+        }));
+        
       },
       error: (err) => {
         console.error("Error al cargar eventos", err);
@@ -36,27 +39,51 @@ export class PrincipalComponent implements OnInit {
     });
   }
 
-  confirmarAsistencia(idEvento: number){
-    alert("Asistencia confirmada para el evento ID: " + idEvento);
-  }
+  confirmarAsistencia(evento: any){
+    const idUsuario = localStorage.getItem("idUsuario");
 
-  cambiarAsistencia(evento: any, estado: boolean){
+    if (!idUsuario){
+      alert("Usuario no identificado");
+      return;
+    }
 
     const dto = {
-      idUsuario: 1,
       idEvento: evento.id_evento,
-      estado:estado
+      idUsuario: Number(idUsuario)
     };
 
-    this.http.put('http://localhost:8080/asistencia/actualiza', dto)
+    this.http.post('http://localhost:8080/asistencia/confirmar', dto)
     .subscribe({
       next: () => {
-        evento.asiste = estado;
+        alert("Asistencia confirmada");
+        evento.asiste = true;
       },
+
       error: (err) => {
-        console.error("Error actualizando asistencia", err);
+        console.error(err);
       }
     });
   }
+
+cambiarAsistencia(evento: any, estado: boolean){
+
+  const idUsuario = localStorage.getItem("idUsuario");
+
+  const dto = {
+    idEvento: evento.id_evento,
+    idUsuario: Number(idUsuario),
+    estado: estado
+  };
+
+  this.http.put('http://localhost:8080/asistencia/actualiza', dto)
+    .subscribe({
+      next: () => {
+        evento.asiste = false;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+}
 
 }

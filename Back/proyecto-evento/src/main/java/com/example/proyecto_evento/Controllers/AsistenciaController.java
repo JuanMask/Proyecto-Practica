@@ -62,6 +62,20 @@ public class AsistenciaController {
             return ResponseEntity.notFound().build();
         }
      }
+
+
+
+    @PostMapping("/confirmar")
+    public ResponseEntity<?> confirmar(@RequestBody AsistenciaDTO dto){
+
+        asistenciaService.confirmarAsistencia(
+            dto.getIdEvento(),
+            dto.getIdUsuario()
+        );
+
+        return ResponseEntity.ok().build();
+    }
+
     
      public void confirmaAsistencia(AsistenciaDTO dto){
         asistenciaService.confirmarAsistencia(dto.getIdUsuario(), dto.getIdEvento());

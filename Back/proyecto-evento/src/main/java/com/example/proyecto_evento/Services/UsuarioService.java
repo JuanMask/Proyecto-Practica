@@ -24,7 +24,9 @@ import com.example.proyecto_evento.Repositories.UsuarioRepository;
     private UsuarioRepository usuarioRepository;
 
 
-    
+    public Optional<usuario> findByUsernameAndPassword(String email, String ps){
+    return usuarioRepository.findByUsernameAndPassword(email, ps);
+}
     /* @Override
     public void flush() {
         // TODO Auto-generated method stub
