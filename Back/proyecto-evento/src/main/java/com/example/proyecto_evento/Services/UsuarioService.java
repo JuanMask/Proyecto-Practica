@@ -17,17 +17,19 @@ import com.example.proyecto_evento.Models.usuario;
 import com.example.proyecto_evento.Repositories.UsuarioRepository;
 
 @Service
-//public class UsuarioService implements UsuarioRepository{
-    public class UsuarioService{
+public class UsuarioService implements UsuarioRepository{
     @Autowired
-    //public UsuarioRepository usuarioRepository;
-    private UsuarioRepository usuarioRepository;
+    public UsuarioRepository usuarioRepository;
 
 
+<<<<<<< HEAD
     public Optional<usuario> findByUsernameAndPassword(String email, String ps){
     return usuarioRepository.findByUsernameAndPassword(email, ps);
 }
     /* @Override
+=======
+    @Override
+>>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
     public void flush() {
         // TODO Auto-generated method stub
         usuarioRepository.flush();
@@ -97,15 +99,15 @@ import com.example.proyecto_evento.Repositories.UsuarioRepository;
     public <S extends usuario> List<S> saveAll(Iterable<S> entities) {
         // TODO Auto-generated method stub
         return usuarioRepository.saveAll(entities);
-    } */
+    }
 
-
+    @Override
     public List<usuario> findAll() {
         // TODO Auto-generated method stub
         return usuarioRepository.findAll();
     }
 
-    /* @Override
+    @Override
     public List<usuario> findAllById(Iterable<Integer> ids) {
         // TODO Auto-generated method stub
         return usuarioRepository.findAllById(ids);
@@ -211,32 +213,29 @@ import com.example.proyecto_evento.Repositories.UsuarioRepository;
     public Optional<usuario> findByUsernameAndPassword(String nombre, String ps) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findByUsernameAndPassword'");
-    } */
+    }
     public boolean login(String email, String ps) {
-        //return usuarioRepository.findByUsernameAndPassword(email, ps).isPresent();
-        return usuarioRepository
-        .findByUsernameAndPassword(email, ps)
-        .isPresent();
+        return usuarioRepository.findByUsernameAndPassword(email, ps).isPresent();
     }
 
-  
-    public void insertarUsuario(String nombre, String apellido, String email, String ps) {
+    @Override
+    public void insertarUsuario(String nombre, String apellido, String email, String password) {
         // TODO Auto-generated method stub
-        usuarioRepository.insertarUsuario(nombre, apellido, email, ps);
+        usuarioRepository.insertarUsuario(nombre, apellido, email, password);
+        
     }
 
-   
-    public int findIdByEmail(String email) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'findIdByEmail'");
-        return usuarioRepository.findIdByEmail(email);
-    }
-
-   /*  @Override
+    @Override
     public Integer findIdByUsername(String nombre) {
         // TODO Auto-generated method stub
         return usuarioRepository.findIdByUsername(nombre);
-    } */
+    }
+
+    @Override
+    public List<String> findAllEmail() {
+        // TODO Auto-generated method stub
+        return usuarioRepository.findAllEmail();
+    }
 
 
 

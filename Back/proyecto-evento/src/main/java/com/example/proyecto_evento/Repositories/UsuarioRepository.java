@@ -1,6 +1,7 @@
 package com.example.proyecto_evento.Repositories;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +15,7 @@ import com.example.proyecto_evento.Models.usuario;
 public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
 
     //Loggin
-  @Query(value = "SELECT * FROM usuario WHERE email = ?1 AND ps = crypt(?2, ps)", nativeQuery = true)
-
+ @Query(value = "SELECT * FROM usuario WHERE email = ?1 AND ps = crypt(?2, ps)", nativeQuery = true)
     Optional<usuario> findByUsernameAndPassword(String email, String ps);
 
     //Registry
@@ -33,15 +33,13 @@ public interface UsuarioRepository extends JpaRepository<usuario, Integer>{
     void insertarUsuario(String nombre,String apellido, String email, String ps);
 
 
- /* @Query(value = "SELECT id_usuario FROM usuario WHERE nombre = ?1", nativeQuery = true)
-    Integer findIdByUsername(String nombre); */
-    //Es mejor buscar persona por el email (Asi evitamos problema con personas que tengan el mismo nombre)
-    //usuario findByEmailAndPs(String email, String ps);
-    @Query(value = "SELECT id_usuario FROM usuario WHERE email = :email", nativeQuery = true)
-    int findIdByEmail(@Param("email") String email);
-
-    //boolean login(String email, String ps);
+ @Query(value = "SELECT id_usurio FROM usuario WHERE email = ?1", nativeQuery = true)
+    Integer findIdByUsername(String email);
 
 
+
+ @Query(value = "SELECT email FROM usuario", nativeQuery = true)
+    List<String> findAllEmail();
 
 }
+

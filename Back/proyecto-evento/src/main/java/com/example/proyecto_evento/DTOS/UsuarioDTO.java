@@ -1,8 +1,15 @@
 package com.example.proyecto_evento.DTOS;
 
+
+import jakarta.validation.constraints.*;
+
 public class UsuarioDTO {
 
+    @NotBlank
+    @Size(min=8, max= 50)
     private String ps;
+    @NotBlank
+    @Email
     private String email;
     public String getPs() {
         return ps;

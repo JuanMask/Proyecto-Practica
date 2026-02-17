@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class usuario {
     @Id
-    private Integer id_usuario;
+    private int id_usuario;
     private String nombre;
     private String apellido;
    // private boolean Conf_Asis; //Confirmar asistencia
@@ -18,7 +18,7 @@ public class usuario {
     private Timestamp fecha_registro;
 
     
-    public usuario(Integer id_usuario, String nombre, String apellido, String email,
+    public usuario(int id_usuario, String nombre, String apellido, String email,
             String ps) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;

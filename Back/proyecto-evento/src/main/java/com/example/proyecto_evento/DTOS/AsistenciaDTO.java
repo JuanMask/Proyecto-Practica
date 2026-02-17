@@ -1,10 +1,18 @@
 package com.example.proyecto_evento.DTOS;
 
-public class AsistenciaDTO {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
+public class AsistenciaDTO {
+    @Positive
+    @NotBlank
     private Integer idUsuario;
+    @Positive
+    @NotBlank
     private Integer idEvento;
+    @NotBlank
     private Boolean estado;
+
     public Integer getIdUsuario() {
         return idUsuario;
     }

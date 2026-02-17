@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -18,42 +17,8 @@ import com.example.proyecto_evento.Models.evento;
 import com.example.proyecto_evento.Repositories.EventoRepository;
 
 @Service
-//public class EventoService implements EventoRepository{
-public class EventoService{
-
-    //Insertar evento
+public class EventoService implements EventoRepository{
     @Autowired
-    private EventoRepository eventoRepository;
-
-    public void insertarEvento(
-        String nombre,
-        String descripcion,
-        Date fecha_evento,
-        int id_creador
-    ){
-        eventoRepository.insertarEvento((nombre), descripcion, fecha_evento, id_creador);
-    }
-
-    public List<evento> findAll(){
-        return eventoRepository.findAll();
-    }
-
-    public void deleteAllById(Integer id){
-        eventoRepository.deleteById(id);
-    }
-
-    public evento crearEvento(evento e){
-        return eventoRepository.save(e);
-    }
-
-
-    public List<evento> ListarEventos() {
-        // TODO Auto-generated method stub
-        return eventoRepository.findAll();
-    }
-
-
-    /* @Autowired
     public EventoRepository eventoRepository;
     @Override
     public void flush() {
@@ -240,7 +205,7 @@ public class EventoService{
     public void insertarEvento(String nombre, String descripcion, Date fecha_evento, int id_creador) {
         // TODO Auto-generated method stub
         eventoRepository.insertarEvento(nombre, descripcion, fecha_evento, id_creador);
-    } */
+    }
 
    
 

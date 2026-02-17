@@ -1,13 +1,18 @@
 package com.example.proyecto_evento.DTOS;
 
-import java.security.Timestamp;
 import java.util.Date;
+import jakarta.validation.constraints.*;
 
 public class CrearEventoDTO {
-private String nombre;
-private String descripcion;
-private Date fechaEvento;
-private String creador;
+    @NotBlank
+    private String nombre;
+    @NotBlank
+    private String descripcion;
+    @FutureOrPresent
+    private Date fechaEvento;
+    @NotBlank
+    private String creador;
+
 public String getNombre() {
     return nombre;
 }

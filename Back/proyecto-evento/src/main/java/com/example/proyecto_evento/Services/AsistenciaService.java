@@ -16,8 +16,7 @@ import com.example.proyecto_evento.Models.asistencia;
 import com.example.proyecto_evento.Repositories.AsistenciaRepository;
 
 @Service
-//public class AsistenciaService implements AsistenciaRepository{
-public class AsistenciaService {
+public class AsistenciaService implements AsistenciaRepository{
     @Autowired
     private AsistenciaRepository asistenciaRepository;
 
@@ -33,7 +32,7 @@ public class AsistenciaService {
         return asistenciaRepository.findAll();
     }
 
-    /* @Override
+    @Override
     public void deleteAllByIdInBatch(Iterable<Integer> ids) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteAllByIdInBatch'");
@@ -100,15 +99,21 @@ public class AsistenciaService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
     }
+<<<<<<< HEAD
  */
    
     /* public List<asistencia> findAll() {
+=======
+
+    @Override
+    public List<asistencia> findAll() {
+>>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'findAll'");
         return asistenciaRepository.findAll();
     } */
 
-   /*  @Override
+    @Override
     public List<asistencia> findAllById(Iterable<Integer> ids) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
@@ -216,7 +221,12 @@ public class AsistenciaService {
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
+<<<<<<< HEAD
  */    /* public void confirmarAsistencia(Integer idUsuario, Integer idEvento) {
+=======
+    @Override
+    public void confirmarAsistencia(int idUsuario, int idEvento) {
+>>>>>>> 6bae718bad2f83c8114090b558cb9c3a71c45ec1
         // TODO Auto-generated method stub
         asistenciaRepository.confirmarAsistencia(idUsuario, idEvento);
     }
